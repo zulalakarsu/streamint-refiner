@@ -40,24 +40,39 @@ Here is an overview of the data refinement process on Vana.
 ## Getting Started
 
 1. Fork this repository
-1. Modify the config to match your environment, or add a .env file at the root. See below for defaults.
-1. Update the schemas in `refiner/models/` to define your raw and normalized data models
-1. Modify the refinement logic in `refiner/transformer/` to match your data structure
-1. If needed, modify `refiner/refiner.py` with your file(s) that need to be refined
-1. Build and test your refinement container
+2. Copy `.env.example` to `.env` and modify the values to match your environment
+3. Update the schemas in `refiner/models/` to define your raw and normalized data models
+4. Modify the refinement logic in `refiner/transformer/` to match your data structure
+5. If needed, modify `refiner/refiner.py` with your file(s) that need to be refined
+6. Build and test your refinement container
 
 ### Environment variables
+
+Copy `.env.example` to `.env` and configure the following variables:
+
 ```dotenv
-# Local directories where inputs and outputs are found. When running on the refinement service, files will be mounted to the /input and /output directory of the container.
+# Local directories where inputs and outputs are found
+# When running on the refinement service, files will be mounted to the /input and /output directory of the container
 INPUT_DIR=input
 OUTPUT_DIR=output
 
-# This key is derived from the user file's original encryption key, automatically injected into the container by the refinement service. When developing locally, any string can be used here for testing.
+# This key is derived from the user file's original encryption key, automatically injected into the container by the refinement service
+# When developing locally, any string can be used here for testing
 REFINEMENT_ENCRYPTION_KEY=0x1234
 
+# Schema configuration
+SCHEMA_NAME=Google Drive Analytics
+SCHEMA_VERSION=0.0.1
+SCHEMA_DESCRIPTION=Schema for the Google Drive DLP, representing some basic analytics of the Google user
+SCHEMA_DIALECT=sqlite
+
+# IPFS configuration
 # Required if using https://pinata.cloud (IPFS pinning service)
-PINATA_API_KEY=xxx
-PINATA_API_SECRET=yyy
+PINATA_API_KEY=your_pinata_api_key_here
+PINATA_API_SECRET=your_pinata_api_secret_here
+
+# IPFS gateway URL for accessing uploaded files
+IPFS_GATEWAY_URL=https://ipfs.vana.org/ipfs
 ```
 
 ## Local Development

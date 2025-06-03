@@ -50,6 +50,11 @@ class Settings(BaseSettings):
         default=None,
         description="Pinata API secret"
     )
+
+    IPFS_GATEWAY_URL: str = Field(
+        default="https://ipfs.vana.org/ipfs",
+        description="IPFS gateway URL for accessing uploaded files"
+    )
     
     class Config:
         env_file = ".env"
