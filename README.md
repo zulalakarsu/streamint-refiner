@@ -71,8 +71,10 @@ SCHEMA_DIALECT=sqlite
 PINATA_API_KEY=your_pinata_api_key_here
 PINATA_API_SECRET=your_pinata_api_secret_here
 
-# IPFS gateway URL for accessing uploaded files
-IPFS_GATEWAY_URL=https://ipfs.vana.org/ipfs
+# Public IPFS gateway URL for accessing uploaded files
+# Recommended to use own dedicated IPFS gateway to avoid congestion / rate limiting
+# Example: "https://ipfs.my-dao.org/ipfs" (Note: won't work for third-party files)
+IPFS_GATEWAY_URL=https://gateway.pinata.cloud/ipfs
 ```
 
 ## Local Development
